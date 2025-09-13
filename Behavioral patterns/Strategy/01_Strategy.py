@@ -43,12 +43,10 @@ class QuickSortStrategy(SortingStrategy):
 
 
 print("--- Examples ---")
-bubble_sort = BubbleSortStrategy()
-context = SortingContext(bubble_sort)
+context = SortingContext(BubbleSortStrategy())
 context.execute([5,2,8])
 
-quick_sort = QuickSortStrategy()
-context.strategy = quick_sort
+context.strategy = QuickSortStrategy()
 context.execute([6,4,9])
 
 
