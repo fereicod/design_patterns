@@ -30,8 +30,25 @@ class WithMilk(CondimentDecorator):
 	def get_description(self) -> str:
 		return self._wrapped_coffee.get_description() + ", with milk"
 
+class WithChocolate(CondimentDecorator):
+	def get_cost(self) -> float: 
+		return self._wrapped_coffee.get_cost() + 1.0
+
+	def get_description(self) -> str:
+		return self._wrapped_coffee.get_description() + ", with chocolate"
+
 
 print("--- Examples ---")
 simple_coffee = SimpleCoffee()
-my_coffee = WithMilk(simple_coffee)
-print(f"{my_coffee.get_description()} -> cost: ${my_coffee.get_cost()}")
+
+my_coffee_with_milk = WithMilk(simple_coffee)
+print(f"{my_coffee_with_milk.get_description()} -> cost: ${my_coffee_with_milk.get_cost()}")
+
+my_coffee_with_choco = WithChocolate(simple_coffee)
+print(f"{my_coffee_with_choco.get_description()} -> cost: ${my_coffee_with_choco.get_cost()}")
+
+my_coffee_with_milk_choco = WithMilk(WithChocolate(simple_coffee)) #WithChocolate(WithMilk(simple_coffee))
+print(f"{my_coffee_with_milk_choco.get_description()} -> cost: ${my_coffee_with_milk_choco.get_cost()}")
+
+my_coffee_with_milk_choco = WithMilk(my_coffee_with_choco) #WithChocolate(my_coffee_with_milk)
+print(f"{my_coffee_with_milk_choco.get_description()} -> cost: ${my_coffee_with_milk_choco.get_cost()}")
