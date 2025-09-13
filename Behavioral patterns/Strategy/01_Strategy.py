@@ -15,8 +15,9 @@ class SortingContext:
 	def __init__(self, strategy: SortingStrategy):
 		self._strategy = strategy
 
-	def execute(self, data: list) -> list:
-		return self._strategy.sort(data)
+	def execute(self, data: list) -> None:
+		result = self._strategy.sort(data)
+		print(result)
 
 
 class BubbleSortStrategy(SortingStrategy):
@@ -28,5 +29,4 @@ class BubbleSortStrategy(SortingStrategy):
 print("--- Examples ---")
 bubble_sort = BubbleSortStrategy()
 context = SortingContext(bubble_sort)
-result = context.execute([5,2,8])
-print(result)
+context.execute([5,2,8])
