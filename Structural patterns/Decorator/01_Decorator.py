@@ -5,6 +5,7 @@ This patter allows adding new functionalities to an object dynamically by wrappi
 """
 from abc import ABC, abstractmethod
 
+# LSP: Common interface that allows a decorated coffee to be treated as a simple one.
 class Coffee(ABC):
 	@abstractmethod
 	def get_cost(self) -> float: pass
@@ -13,6 +14,8 @@ class Coffee(ABC):
 	def get_description(self) -> str: pass
 
 
+# SRP: It's only responsability is to be a base coffee.
+# OCP: This class is CLOSED for changes.
 class SimpleCoffee(Coffee):
 	def get_cost(self) -> float: return 2.0
 	def get_description(self) -> str: return "Simple coffee"
@@ -23,6 +26,8 @@ class CondimentDecorator(Coffee):
 		self._wrapped_coffee = coffee
 
 
+# SRP: It's only responsability is to add milk.
+# OCP: This class is OPEN to new decorators.
 class WithMilk(CondimentDecorator):
 	def get_cost(self) -> float: 
 		return self._wrapped_coffee.get_cost() + 0.5
@@ -30,6 +35,8 @@ class WithMilk(CondimentDecorator):
 	def get_description(self) -> str:
 		return self._wrapped_coffee.get_description() + ", with milk"
 
+# SRP: It's only responsability is to add chocolate.
+# OCP: This class is OPEN to new decorators.
 class WithChocolate(CondimentDecorator):
 	def get_cost(self) -> float: 
 		return self._wrapped_coffee.get_cost() + 1.0
