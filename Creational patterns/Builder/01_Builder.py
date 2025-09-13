@@ -16,6 +16,7 @@ class Computer:
 		print("Computer:", ", ".join(self.parts))
 
 
+# DIP: Director depends on this abstraction.
 class Builder(ABC):
 	@abstractmethod
 	def build_cpu(self): pass
@@ -27,6 +28,8 @@ class Builder(ABC):
 	def get_result(self) -> Computer: pass
 
 
+# Concrete Builders
+# OCP: Add new builders without modifying director
 class GamingPCBuilder(Builder):
 	def __init__(self):
 		self.computer = Computer()
@@ -44,6 +47,7 @@ class OfficePCBuilder(Builder):
 	def get_result(self): return self.computer 
 
 
+# SRP: Handles construction steps only.
 class Director:
 	def __init__(self, builder: Builder):
 		self.builder = builder
