@@ -55,10 +55,8 @@ class Director:
 
 
 print("--- Examples ---")
-gaming_pc_builder = GamingPCBuilder()
-pc1 = Director(gaming_pc_builder).constructor()
+pc1 = Director(GamingPCBuilder()).constructor()
 pc1.show()
 
-office_pc_builder = OfficePCBuilder()
-pc2 = Director(office_pc_builder).constructor()
+pc2 = Director(OfficePCBuilder()).constructor()
 pc2.show()
