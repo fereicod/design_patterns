@@ -29,14 +29,16 @@ class SortingContext:
 
 
 class BubbleSortStrategy(SortingStrategy):
+	def __init__(self): print("= BubbleSort =")
+
 	def sort(self, data: list) -> list:
-		print("- Sorting with Bubble Sort...")
 		return sorted(data)
 
 
 class QuickSortStrategy(SortingStrategy):
+	def __init__(self): print("= QuickSort =")
+
 	def sort(self, data: list) -> list:
-		print("- Sorting with Quick Sort...")
 		return sorted(data)
 
 
@@ -44,3 +46,9 @@ print("--- Examples ---")
 bubble_sort = BubbleSortStrategy()
 context = SortingContext(bubble_sort)
 context.execute([5,2,8])
+
+quick_sort = QuickSortStrategy()
+context.strategy = quick_sort
+context.execute([6,4,9])
+
+
