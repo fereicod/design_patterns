@@ -1,14 +1,16 @@
 """
 When a "subject" changes, all ots "observers" are notified automatically.
-- SOLID -> OCP, DIP
+- SOLID -> SRP, OCP, DIP
 """
 from abc import ABC, abstractmethod
 
+# DIP: Store depends on this abstraction, not on concrete implementations.
 class Observer(ABC):
 	@abstractmethod
 	def update(self, order_info: str): pass
 
 
+# OCP: We can add more notifiers without modifying Store.
 class EmailNotifier(Observer):
 	def update(self, order_info: str):
 		print(f"Email sent: Order {order_info}")
@@ -18,6 +20,7 @@ class SMSNotifier(Observer):
 		print(f"SMS sent: Order {order_info}")
 
 
+# SRP: Store only manages observers and notifications.
 class Store:
 	def __init__(self):
 		self._observers = []
