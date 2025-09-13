@@ -3,19 +3,23 @@ This pattern defines the skeleton of an algorithm in a base class but lets subcl
 - OOP -> Inheritance
 - SOLID -> OCP, DIP
 """
-
 from abc import ABC, abstractmethod
 
+
 class BeveragePreparer(ABC):
+	# OCP: This template method is CLOSED for modification. It's logic is fixed.
 	def prepare(self):
+		# DIP: The high-level 'prepare' method depends on abstractions
+		# (the abstract methods), not on concrete implementations.
 		self.boil_water()
 		self.brew_ingredient()
 		self.pour_in_cup()
 		self.add_condiments()
 
-	def boil_water(self): print("Boiling water")
-	def pour_in_cup(self): print("Pouring into cup")
+	def boil_water(self): print("- Boiling water")
+	def pour_in_cup(self): print("- Pouring into cup")
 
+	# OCP: The system is OPEN for extension through these implementations.
 	@abstractmethod
 	def brew_ingredient(self): pass
 	@abstractmethod
@@ -24,11 +28,10 @@ class BeveragePreparer(ABC):
 
 class TeaPreparer(BeveragePreparer):
 	def __init__(self): print("= Tea =")
-	def brew_ingredient(self): print("Steeping the teabag")
-	def add_condiments(self): print("Adding lemon")
+	def brew_ingredient(self): print("- Steeping the teabag")
+	def add_condiments(self): print("- Adding lemon")
+
 
 print("--- Examples ---")
 tea = TeaPreparer()
 tea.prepare()
-
-
