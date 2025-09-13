@@ -24,6 +24,12 @@ class BubbleSortStrategy(SortingStrategy):
 	def sort(self, data: list) -> list:
 		print("- Sorting with Bubble Sort...")
 		return sorted(data)
+		
+
+class QuickSortStrategy(SortingStrategy):
+	def sort(self, data: list) -> list:
+		print("- Sorting with Quick Sort...")
+		return sorted(data)
 
 
 print("--- Examples ---")
