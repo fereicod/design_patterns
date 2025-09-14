@@ -1,5 +1,5 @@
 """
-When a "subject" changes, all its "observers" are notified automatically (HR Tech)
+Application Status Change (HR Tech)
 """
 from abc import ABC, abstractmethod
 
