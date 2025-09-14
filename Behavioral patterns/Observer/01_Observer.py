@@ -1,5 +1,5 @@
 """
-When a "subject" changes, all ots "observers" are notified automatically.
+When a "subject" changes, all others "observers" are notified automatically.
 - SOLID -> SRP, OCP, DIP
 """
 from abc import ABC, abstractmethod
