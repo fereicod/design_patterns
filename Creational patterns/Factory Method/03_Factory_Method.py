@@ -32,7 +32,6 @@ class AssessmentCreator(ABC):
 	@abstractmethod
 	def create_assessment(self) -> Assesment: pass
 
-
 # OCP: OPEN for extension for new job type
 class PythonDevCreator(AssessmentCreator):
 	def create_assessment(self) -> Assesment:

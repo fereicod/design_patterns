@@ -17,6 +17,7 @@ class BankTransferProcessor(PaymentProcessor):
 	def process(self, amount: float):
 		print(f"Processing ${amount} with Bank Transfer")
 
+
 # Creators (Factories)
 # DIP: High-level code will depend on this abstraction.
 class PaymentGateway(ABC):
