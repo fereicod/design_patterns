@@ -40,7 +40,6 @@ class BubbleSortStrategy(SortingStrategy):
 	def sort(self, data: list) -> list:
 		return sorted(data)
 
-
 class QuickSortStrategy(SortingStrategy):
 	def __init__(self): print("= QuickSort =")
 
